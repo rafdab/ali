@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class CRC {
     public static void main(String[] args) {
         try {
