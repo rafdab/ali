@@ -33,7 +33,7 @@ public class Encoding {
                 tmp.add(Character.getNumericValue(s2.charAt(i)));
             }
         }
-        for (int i = 0; i < args.length(); ++i) tmp2.add(0);
+        for (int i = 0; i < args.length() * 8; ++i) tmp2.add(0);
         for (int i = 0; i < 16; ++i) tmp2.add(1);
 
         fcs = poly.divModN(poly.add(tmp, tmp2), g);
