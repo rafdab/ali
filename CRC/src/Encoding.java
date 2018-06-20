@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Encoding {
     private ArrayList<Integer> fcs;
@@ -23,21 +24,25 @@ public class Encoding {
 
         ArrayList<Integer> tmp = new ArrayList<>();
         ArrayList<Integer> tmp2 = new ArrayList<>();
-
         for (int i = 0; i < 16 ; ++i){
             tmp.add(0);
         }
         for (byte b : message){
             String s2 = String.format("%8s", Integer.toBinaryString(b & 0xFF)).replace(' ', '0');
             for (int i = 0; i < 8; ++i){
-                tmp.add(Character.getNumericValue(s2.charAt(i)));
+                tmp2.add(Character.getNumericValue(s2.charAt(i)));
             }
         }
+        Collections.reverse(tmp2);
+        tmp.addAll(tmp2);
+        tmp2.clear();
+
         for (int i = 0; i < args.length() * 8; ++i) tmp2.add(0);
         for (int i = 0; i < 16; ++i) tmp2.add(1);
 
         fcs = poly.divModN(poly.add(tmp, tmp2), g);
         while(fcs.size() < 16) fcs.add(0);
+        Collections.reverse(fcs);
     }
 
     public ArrayList<Integer> getFcs() {
