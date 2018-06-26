@@ -11,5 +11,10 @@ public class Main {
         String[] tmpStrings = args[1].split(",");
         for (String s : tmpStrings) f.add(Integer.parseInt(s));
         PolynomialRings pr = new PolynomialRings(mod, f);
+
+        pr.print(pr.inv());
+        pr.print(pr.zeroDivisors());
+        pr.print(pr.nil());
+        pr.print(pr.id());
     }
 }

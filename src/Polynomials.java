@@ -36,7 +36,7 @@ public class Polynomials {
                 }
             }
         }
-        return normalize(result);
+        return (result);
     }
 
     private int getZero(int a, int b) throws ArithmeticException{
@@ -90,7 +90,7 @@ public class Polynomials {
         return normalize(remainder);
     }
 
-    public ArrayList<Integer> gcc (ArrayList<Integer> f, ArrayList<Integer> g){
+    public ArrayList<Integer> gcc (ArrayList<Integer> f, ArrayList<Integer> g) throws ArithmeticException{
         if (g.size() == 0) return f;
         if (f.size() > g.size()){
             return gcc(g, divModN(f, g));
